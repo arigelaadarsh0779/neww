@@ -1,0 +1,26 @@
+package com.project.Event_Hub.Booking.Mapper;
+
+import com.project.Event_Hub.Booking.Dto.BookingResponseDto;
+import com.project.Event_Hub.Booking.Entity.Bookings;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+public class BookingMapper {
+
+  public BookingResponseDto convertObjtoResponse(Bookings bookings){
+      BookingResponseDto dto = new BookingResponseDto();
+      dto.setName(bookings.getUser().getUsername());
+      dto.setBookingDate(bookings.getBookingDate());
+      dto.setTotalAmount(bookings.getTotalAmount());
+      dto.setBookingid(bookings.getBookingId());
+      dto.setStatus(bookings.getStatus());
+      dto.setEventId(bookings.getEvent().getEventId());
+      dto.setBookingNumber(bookings.getBookingNumber());
+      dto.setNumberOfSeats(bookings.getNumberOfSeats());
+     return dto;
+  }
+
+
+}
